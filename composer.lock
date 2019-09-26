@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "edef9d131afbe713dd62fe78590bec53",
+    "content-hash": "dcb8a2f26ee415703fae8dbce0d261e3",
     "packages": [
         {
             "name": "chloroplast/marmot-common",
@@ -47,16 +47,16 @@
         },
         {
             "name": "chloroplast/marmot-interface",
-            "version": "1.0",
+            "version": "0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/marmot-cn/marmot-interfaces.git",
-                "reference": "1a1314de293df69bd76029605b2885523b6d0e54"
+                "reference": "a934edf8d319b7cc4ed0ae6695aac4d6fbc253dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/marmot-cn/marmot-interfaces/zipball/1a1314de293df69bd76029605b2885523b6d0e54",
-                "reference": "1a1314de293df69bd76029605b2885523b6d0e54",
+                "url": "https://api.github.com/repos/marmot-cn/marmot-interfaces/zipball/a934edf8d319b7cc4ed0ae6695aac4d6fbc253dd",
+                "reference": "a934edf8d319b7cc4ed0ae6695aac4d6fbc253dd",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -89,7 +89,7 @@
                 "interface",
                 "marmot"
             ],
-            "time": "2019-09-26T06:18:47+00:00"
+            "time": "2019-09-26T11:31:15+00:00"
         },
         {
             "name": "container-interop/container-interop",
@@ -1118,16 +1118,16 @@
         },
         {
             "name": "php-di/phpdoc-reader",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-DI/PhpDocReader.git",
-                "reference": "7d0de60b9341933c8afd172a6255cd7557601e0e"
+                "reference": "15678f7451c020226807f520efb867ad26fbbfcf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-DI/PhpDocReader/zipball/7d0de60b9341933c8afd172a6255cd7557601e0e",
-                "reference": "7d0de60b9341933c8afd172a6255cd7557601e0e",
+                "url": "https://api.github.com/repos/PHP-DI/PhpDocReader/zipball/15678f7451c020226807f520efb867ad26fbbfcf",
+                "reference": "15678f7451c020226807f520efb867ad26fbbfcf",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1157,7 +1157,7 @@
                 "phpdoc",
                 "reflection"
             ],
-            "time": "2018-02-18T17:39:01+00:00"
+            "time": "2019-09-26T11:24:58+00:00"
         },
         {
             "name": "phpseclib/phpseclib",

@@ -4,6 +4,7 @@ namespace Marmot\Basecode\Classes;
 
 use Marmot\Interfaces\ICommandHandlerFactory;
 use Marmot\Interfaces\ICommand;
+use Marmot\Interfaces\ICommandHandler;
 use Marmot\Interfaces\INull;
 
 use Marmot\Core;
@@ -42,8 +43,8 @@ abstract class CommandBus
             return false;
         }
         
-        return $this->sendAction($command);
+        return $this->sendAction($handler, $command);
     }
 
-    abstract protected function sendAction(ICommand $command) : bool;
+    abstract protected function sendAction(ICommandHandler $handler, ICommand $command) : bool;
 }

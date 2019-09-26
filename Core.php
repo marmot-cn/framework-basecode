@@ -8,8 +8,8 @@
 
 namespace Marmot;
 
-use Marmot\Basecode\Application\IApplication;
-use Marmot\Basecode\Application\IFramework;
+use Marmot\Interfaces\Application\IApplication;
+use Marmot\Interfaces\Application\IFramework;
 use Marmot\Basecode\MockApplication;
 use Marmot\Basecode\MockFramework;
 use Marmot\Basecode\MarmotCore;

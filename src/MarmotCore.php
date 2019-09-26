@@ -10,8 +10,8 @@ namespace Marmot\Basecode;
 
 use Marmot\Basecode\Classes\Error;
 use Marmot\Basecode\Classes\Server;
-use Marmot\Basecode\Application\IApplication;
-use Marmot\Basecode\Application\IFramework;
+use Marmot\Interfaces\Application\IApplication;
+use Marmot\Interfaces\Application\IFramework;
 
 /**
  * 文件核心类

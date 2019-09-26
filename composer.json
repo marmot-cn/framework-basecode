@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "chloroplast/marmot-interface": "1.0",
+        "chloroplast/marmot-interface": "0.9",
         "ezyang/htmlpurifier": "4.10.0",
         "nikic/fast-route": "0.7.0",
         "php-di/php-di": "5.4.6",

@@ -2,8 +2,8 @@
 namespace Marmot\Basecode;
 
 use Marmot\Basecode\MarmotCore;
-use Marmot\Basecode\Application\IApplication;
-use Marmot\Basecode\Application\IFramework;
+use Marmot\Interfaces\Application\IApplication;
+use Marmot\Interfaces\Application\IFramework;
 
 class MockMarmotCore extends MarmotCore
 {

@@ -14,12 +14,12 @@ abstract class Controller
     /**
      * @var Request $request 请求对象
      */
-    private $request;
+    protected $request;
 
     /**
      * @var Response $response 响应对象
      */
-    private $response;
+    protected $response;
 
     /**
      * 构造函数,请求初始化 请求对象 和 响应对象

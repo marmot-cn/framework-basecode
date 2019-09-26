@@ -1,7 +1,7 @@
 <?php
 namespace Marmot\Basecode;
 
-use Marmot\Basecode\Application\IFramework;
+use Marmot\Interfaces\Application\IFramework;
 
 class MockFramework implements IFramework
 {

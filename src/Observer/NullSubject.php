@@ -1,9 +1,9 @@
 <?php
 namespace Marmot\Basecode\Observer;
 
-use Marmot\Basecode\Interfaces\Subject as ISubject;
-use Marmot\Basecode\Interfaces\Observer;
-use Marmot\Basecode\Interfaces\INull;
+use Marmot\Interfaces\Subject as ISubject;
+use Marmot\Interfaces\Observer;
+use Marmot\Interfaces\INull;
 use Marmot\Core;
 
 class NullSubject implements ISubject, INull

@@ -19,7 +19,7 @@ class NullResponseTest extends TestCase
     public function testImplementINull()
     {
         $this->assertInstanceOf(
-            'Marmot\Basecode\Interfaces\INull',
+            'Marmot\Interfaces\INull',
             $this->stub
         );
     }

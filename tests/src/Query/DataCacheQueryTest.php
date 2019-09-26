@@ -2,7 +2,7 @@
 namespace Marmot\Basecode\Query;
 
 use PHPUnit\Framework\TestCase;
-use Marmot\Basecode\Interfaces\CacheLayer;
+use Marmot\Interfaces\CacheLayer;
 use Prophecy\Argument;
 
 class DataCacheQueryTest extends TestCase

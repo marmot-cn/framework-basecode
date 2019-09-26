@@ -21,7 +21,7 @@ class EmptyViewTest extends TestCase
 
     public function testCorrectImplementIView()
     {
-        $this->assertInstanceof('Marmot\Basecode\Interfaces\IView', $this->stub);
+        $this->assertInstanceof('Marmot\Interfaces\IView', $this->stub);
     }
 
     public function testDisplay()

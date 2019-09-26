@@ -43,7 +43,7 @@ class ControllerTest extends TestCase
     public function testRender()
     {
         //mock interface
-        $ivew = $this->getMockBuilder('Marmot\Basecode\Interfaces\IView')
+        $ivew = $this->getMockBuilder('Marmot\Interfaces\IView')
                      ->setMethods(['display'])
                      ->getMock();
 

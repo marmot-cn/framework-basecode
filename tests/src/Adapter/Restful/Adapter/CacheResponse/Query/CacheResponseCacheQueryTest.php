@@ -4,8 +4,8 @@ namespace Marmot\Basecode\Adapter\Restful\Adapter\CacheResponse\Query;
 use PHPUnit\Framework\TestCase;
 use Marmot\Core;
 
-use Marmot\Basecode\Interfaces\DbLayer;
-use Marmot\Basecode\Interfaces\CacheLayer;
+use Marmot\Interfaces\DbLayer;
+use Marmot\Interfaces\CacheLayer;
 
 class CacheResponseDataCacheQueryTest extends TestCase
 {

@@ -21,12 +21,12 @@ class NullSubjectTest extends TestCase
 
     public function testImplementsObserver()
     {
-        $this->assertInstanceOf('Marmot\Basecode\Interfaces\Subject', $this->subject);
+        $this->assertInstanceOf('Marmot\Interfaces\Subject', $this->subject);
     }
 
     public function testImplementsNull()
     {
-        $this->assertInstanceOf('Marmot\Basecode\Interfaces\INull', $this->subject);
+        $this->assertInstanceOf('Marmot\Interfaces\INull', $this->subject);
     }
 
     public function testAttach()

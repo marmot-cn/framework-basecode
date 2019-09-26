@@ -4,7 +4,7 @@ namespace Marmot\Basecode\Classes;
 
 use Marmot\Core;
 use Marmot\Basecode\Classes\Filter;
-use Marmot\Basecode\Interfaces\IMediaTypeStrategy;
+use Marmot\Interfaces\IMediaTypeStrategy;
 
 /**
  * 因为我们只是基于接口作框架处理开发.这里这里只是保留了接口的功能.

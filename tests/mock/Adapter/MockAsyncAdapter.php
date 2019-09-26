@@ -1,10 +1,10 @@
 <?php
 namespace Marmot\Basecode\Adapter;
 
-use Marmot\Basecode\Interfaces\IAsyncAdapter;
+use Marmot\Interfaces\IAsyncAdapter;
 use Marmot\Basecode\Adapter\Restful\GuzzleAdapter;
 use Marmot\Basecode\Classes\NullTranslator;
-use Marmot\Basecode\Interfaces\IRestfulTranslator;
+use Marmot\Interfaces\IRestfulTranslator;
 
 class MockAsyncAdapter extends GuzzleAdapter implements IAsyncAdapter
 {

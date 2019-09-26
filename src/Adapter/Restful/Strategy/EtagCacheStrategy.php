@@ -1,7 +1,7 @@
 <?php
 namespace Marmot\Basecode\Adapter\Restful\Strategy;
 
-use Marmot\Basecode\Interfaces\INull;
+use Marmot\Interfaces\INull;
 use Marmot\Basecode\Adapter\Restful\CacheResponse;
 use Marmot\Basecode\Adapter\Restful\Repository\CacheResponseRepository;
 

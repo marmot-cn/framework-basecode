@@ -2,9 +2,9 @@
 //powered by kevin
 namespace Marmot\Basecode\Classes;
 
-use Marmot\Basecode\Interfaces\ICommandHandlerFactory;
-use Marmot\Basecode\Interfaces\ICommand;
-use Marmot\Basecode\Interfaces\INull;
+use Marmot\Interfaces\ICommandHandlerFactory;
+use Marmot\Interfaces\ICommand;
+use Marmot\Interfaces\INull;
 
 use Marmot\Core;
 
@@ -16,9 +16,6 @@ use Marmot\Core;
  */
 abstract class CommandBus
 {
-    
-    private $transaction;
-    
     private $commandHandlerFactory;
 
     public function __construct(ICommandHandlerFactory $commandHandlerFactory)

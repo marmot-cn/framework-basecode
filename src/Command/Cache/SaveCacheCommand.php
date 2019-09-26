@@ -1,8 +1,7 @@
 <?php
 namespace Marmot\Basecode\Command\Cache;
 
-use Marmot\Basecode\Interfaces\Command;
-use Marmot\Basecode\Observer\CacheObserver;
+use Marmot\Interfaces\Command;
 use Marmot\Basecode\Classes\Transaction;
 use Marmot\Core;
 

@@ -1,8 +1,8 @@
 <?php
 namespace Marmot\Basecode\Classes;
 
-use Marmot\Basecode\Interfaces\ITranslator;
-use Marmot\Basecode\Interfaces\INull;
+use Marmot\Interfaces\ITranslator;
+use Marmot\Interfaces\INull;
 use Marmot\Core;
 
 class NullTranslator implements ITranslator, INull

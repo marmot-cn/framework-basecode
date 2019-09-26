@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 
 use GuzzleHttp\Client;
-use Marmot\Basecode\Interfaces\IRestfulTranslator;
+use Marmot\Interfaces\IRestfulTranslator;
 
 class GuzzleAdapterTest extends TestCase
 {

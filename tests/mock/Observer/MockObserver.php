@@ -1,7 +1,7 @@
 <?php
 namespace Marmot\Basecode\Observer;
 
-use Marmot\Basecode\Interfaces\Observer;
+use Marmot\Interfaces\Observer;
 
 class MockObserver implements Observer
 {

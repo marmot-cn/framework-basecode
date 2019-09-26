@@ -3,8 +3,8 @@ namespace Marmot\Basecode\Adapter;
 
 use Marmot\Basecode\Adapter\Restful\GuzzleConcurrentAdapter;
 use Marmot\Basecode\Adapter\Restful\GuzzleAdapter;
-use Marmot\Basecode\Interfaces\IRepository;
-use Marmot\Basecode\Interfaces\IAsyncAdapter;
+use Marmot\Interfaces\IRepository;
+use Marmot\Interfaces\IAsyncAdapter;
 
 abstract class ConcurrentAdapter
 {

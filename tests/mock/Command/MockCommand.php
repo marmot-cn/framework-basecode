@@ -1,7 +1,7 @@
 <?php
 namespace Marmot\Basecode\Command;
 
-use Marmot\Basecode\Interfaces\Command;
+use Marmot\Interfaces\Command;
 
 class MockCommand implements Command
 {

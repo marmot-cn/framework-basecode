@@ -33,7 +33,7 @@ class CacheTest extends TestCase
 
     public function testImplementsCacheLayer()
     {
-        $this->assertInstanceOf('Marmot\Basecode\Interfaces\CacheLayer', $this->cache);
+        $this->assertInstanceOf('Marmot\Interfaces\CacheLayer', $this->cache);
     }
 
     public function testGetKey()

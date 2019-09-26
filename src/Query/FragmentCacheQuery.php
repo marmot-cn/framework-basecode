@@ -2,7 +2,7 @@
 namespace Marmot\Basecode\Query;
 
 use Marmot\Basecode\Classes;
-use Marmot\Basecode\Interfaces\CacheLayer;
+use Marmot\Interfaces\CacheLayer;
 
 /**
  * Query层的片段存处理,需要处理页面中的一个片段.

@@ -2,8 +2,8 @@
 namespace Marmot\Basecode\Adapter\Restful;
 
 use Marmot\Basecode\Classes\NullTranslator;
-use Marmot\Basecode\Interfaces\IRestfulTranslator;
-use Marmot\Basecode\Interfaces\INull;
+use Marmot\Interfaces\IRestfulTranslator;
+use Marmot\Interfaces\INull;
 use Marmot\Basecode\Adapter\Restful\Repository\CacheResponseRepository;
 
 use GuzzleHttp\Client;

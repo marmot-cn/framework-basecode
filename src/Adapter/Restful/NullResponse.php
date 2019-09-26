@@ -1,7 +1,7 @@
 <?php
 namespace Marmot\Basecode\Adapter\Restful;
 
-use Marmot\Basecode\Interfaces\INull;
+use Marmot\Interfaces\INull;
 
 use GuzzleHttp\Psr7\Response;
 

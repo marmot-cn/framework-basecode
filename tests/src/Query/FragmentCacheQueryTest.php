@@ -3,7 +3,7 @@ namespace Marmot\Basecode\Query;
 
 use Marmot\Basecode\Classes;
 use Marmot\Basecode\Classes\MockCache;
-use Marmot\Basecode\Interfaces\CacheLayer;
+use Marmot\Interfaces\CacheLayer;
 
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;

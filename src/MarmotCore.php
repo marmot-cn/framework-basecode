@@ -235,5 +235,7 @@ abstract class MarmotCore
         return $mockStatus && $mockError;
     }
 
+    abstract protected function initDb();
+    
     abstract protected function initCache();
 }

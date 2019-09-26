@@ -1,9 +1,9 @@
 <?php
 namespace Marmot\Basecode\Classes;
 
-use Marmot\Basecode\Interfaces\ICommandHandler;
-use Marmot\Basecode\Interfaces\ICommand;
-use Marmot\Basecode\Interfaces\INull;
+use Marmot\Interfaces\ICommandHandler;
+use Marmot\Interfaces\ICommand;
+use Marmot\Interfaces\INull;
 
 use Marmot\Core;
 

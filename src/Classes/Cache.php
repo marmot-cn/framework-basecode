@@ -4,7 +4,7 @@ namespace Marmot\Basecode\Classes;
 
 use Marmot\Basecode\Command\Cache\DelCacheCommand;
 use Marmot\Basecode\Command\Cache\SaveCacheCommand;
-use Marmot\Basecode\Interfaces\CacheLayer;
+use Marmot\Interfaces\CacheLayer;
 use Marmot\Core;
 
 abstract class Cache implements CacheLayer

@@ -2,7 +2,7 @@
 namespace Marmot\Basecode\Query;
 
 use Marmot\Basecode\Classes;
-use Marmot\Basecode\Interfaces\CacheLayer;
+use Marmot\Interfaces\CacheLayer;
 
 /**
  * DataCacheQuery文件,abstract抽象类.针对单独的数据缓存抽象类

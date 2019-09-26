@@ -1,7 +1,7 @@
 <?php
 namespace Marmot\Basecode\Command\Cache;
 
-use Marmot\Basecode\Interfaces\Command;
+use Marmot\Interfaces\Command;
 
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
@@ -34,7 +34,7 @@ class DelCacheCommandTest extends TestCase
 
     public function testImplementsCommand()
     {
-        $this->assertInstanceOf('Marmot\Basecode\Interfaces\Command', $this->command);
+        $this->assertInstanceOf('Marmot\Interfaces\Command', $this->command);
     }
 
     /**

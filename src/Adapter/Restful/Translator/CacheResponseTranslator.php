@@ -1,7 +1,7 @@
 <?php
 namespace Marmot\Basecode\Adapter\Restful\Translator;
 
-use Marmot\Basecode\Interfaces\ITranslator;
+use Marmot\Interfaces\ITranslator;
 use Marmot\Basecode\Adapter\Restful\CacheResponse;
 use Marmot\Basecode\Adapter\Restful\NullResponse;
 use GuzzleHttp\Psr7\Response;

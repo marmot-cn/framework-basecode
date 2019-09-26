@@ -1,8 +1,8 @@
 <?php
 namespace Marmot\Basecode\Observer;
 
-use Marmot\Basecode\Interfaces\Subject as ISubject;
-use Marmot\Basecode\Interfaces\Observer;
+use Marmot\Interfaces\Subject as ISubject;
+use Marmot\Interfaces\Observer;
 
 /**
  * @author chloroplast

@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 
 use Marmot\Core;
 use Marmot\Basecode\Classes\NullTranslator;
-use Marmot\Basecode\Interfaces\ICommand;
+use Marmot\Interfaces\ICommand;
 
 class NullTranslatorTest extends TestCase
 {
@@ -18,12 +18,12 @@ class NullTranslatorTest extends TestCase
 
     public function testImplementsITranslator()
     {
-        $this->assertInstanceOf('Marmot\Basecode\Interfaces\ITranslator', $this->nullTranslator);
+        $this->assertInstanceOf('Marmot\Interfaces\ITranslator', $this->nullTranslator);
     }
 
     public function testImplementsNull()
     {
-        $this->assertInstanceOf('Marmot\Basecode\Interfaces\INull', $this->nullTranslator);
+        $this->assertInstanceOf('Marmot\Interfaces\INull', $this->nullTranslator);
     }
 
     public function testArrayToObject()

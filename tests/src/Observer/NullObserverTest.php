@@ -21,12 +21,12 @@ class NullObserverTest extends TestCase
 
     public function testImplementsObserver()
     {
-        $this->assertInstanceOf('Marmot\Basecode\Interfaces\Observer', $this->observer);
+        $this->assertInstanceOf('Marmot\Interfaces\Observer', $this->observer);
     }
 
     public function testImplementsNull()
     {
-        $this->assertInstanceOf('Marmot\Basecode\Interfaces\INull', $this->observer);
+        $this->assertInstanceOf('Marmot\Interfaces\INull', $this->observer);
     }
 
     public function testUpdate()

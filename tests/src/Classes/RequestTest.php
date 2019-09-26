@@ -3,7 +3,7 @@ namespace Marmot\Basecode\Classes;
 
 use Marmot\Core;
 use Marmot\Basecode\Classes\Request;
-use Marmot\Basecode\Interfaces\IMediaTypeStrategy;
+use Marmot\Interfaces\IMediaTypeStrategy;
 
 use PHPUnit\Framework\TestCase;
 

@@ -3,7 +3,7 @@
 namespace Marmot\Basecode\Classes;
 
 use Marmot\Core;
-use Marmot\Basecode\Interfaces\IView;
+use Marmot\Interfaces\IView;
 
 /**
  * 应用层服务父类,控制应用服务层的 Request 和 Reponse

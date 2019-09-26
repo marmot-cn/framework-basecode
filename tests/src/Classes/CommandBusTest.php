@@ -5,10 +5,10 @@ use PHPUnit\Framework\TestCase;
 
 use Marmot\Core;
 use Marmot\Basecode\Classes\CommandBus;
-use Marmot\Basecode\Interfaces\ICommandHandlerFactory;
-use Marmot\Basecode\Interfaces\ICommand;
-use Marmot\Basecode\Interfaces\INull;
-use Marmot\Basecode\Interfaces\ICommandHandler;
+use Marmot\Interfaces\ICommandHandlerFactory;
+use Marmot\Interfaces\ICommand;
+use Marmot\Interfaces\INull;
+use Marmot\Interfaces\ICommandHandler;
 use Marmot\Basecode\Classes\NullCommandHandler;
 
 use Prophecy\Argument;

@@ -1,7 +1,7 @@
 <?php
 namespace Marmot\Basecode\View;
 
-use Marmot\Basecode\Interfaces\IView;
+use Marmot\Interfaces\IView;
 
 class EmptyView implements IView
 {

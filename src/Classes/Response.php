@@ -2,7 +2,7 @@
 //powered by chloroplast
 namespace Marmot\Basecode\Classes;
 
-use Marmot\Basecode\Interfaces\IResponseFormatter;
+use Marmot\Interfaces\IResponseFormatter;
 use Marmot\Core;
 
 /**

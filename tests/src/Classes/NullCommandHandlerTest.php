@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 
 use Marmot\Core;
 use Marmot\Basecode\Classes\NullCommandHandler;
-use Marmot\Basecode\Interfaces\ICommand;
+use Marmot\Interfaces\ICommand;
 
 class NullCommandHandlerTest extends TestCase
 {
@@ -18,12 +18,12 @@ class NullCommandHandlerTest extends TestCase
 
     public function testImplementsICommandHandler()
     {
-        $this->assertInstanceOf('Marmot\Basecode\Interfaces\ICommandHandler', $this->nullCommandHandler);
+        $this->assertInstanceOf('Marmot\Interfaces\ICommandHandler', $this->nullCommandHandler);
     }
 
     public function testImplementsNull()
     {
-        $this->assertInstanceOf('Marmot\Basecode\Interfaces\INull', $this->nullCommandHandler);
+        $this->assertInstanceOf('Marmot\Interfaces\INull', $this->nullCommandHandler);
     }
 
     public function testExecute()

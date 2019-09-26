@@ -36,7 +36,7 @@ class SaveCacheCommandTest extends TestCase
 
     public function testImplementsCommand()
     {
-        $this->assertInstanceOf('Marmot\Basecode\Interfaces\Command', $this->command);
+        $this->assertInstanceOf('Marmot\Interfaces\Command', $this->command);
     }
 
     public function testConstructro()

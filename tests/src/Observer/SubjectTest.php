@@ -4,7 +4,7 @@ namespace Marmot\Basecode\Observer;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 
-use Marmot\Basecode\Interfaces\Observer;
+use Marmot\Interfaces\Observer;
 
 class SubjectTest extends TestCase
 {
@@ -23,11 +23,11 @@ class SubjectTest extends TestCase
     }
     
     /**
-     * 测试是否正确实现Marmot\Basecode\Interfaces\Subject
+     * 测试是否正确实现Marmot\Interfaces\Subject
      */
     public function testImplementsSubject()
     {
-        $this->assertInstanceOf('Marmot\Basecode\Interfaces\Subject', $this->subject);
+        $this->assertInstanceOf('Marmot\Interfaces\Subject', $this->subject);
     }
 
     /**

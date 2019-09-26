@@ -1,7 +1,7 @@
 <?php
 namespace Marmot\Basecode\Observer;
 
-use Marmot\Basecode\Interfaces\Command;
+use Marmot\Interfaces\Command;
 
 class MockCacheObserver extends CacheObserver
 {

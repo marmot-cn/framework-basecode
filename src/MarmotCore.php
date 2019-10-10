@@ -55,6 +55,7 @@ abstract class MarmotCore
         $this->initCache();//初始化缓存使用
         $this->initDb();//初始化mysql
         $this->initError();
+        $this->initHook();//初始化钩子, 可以初始化其他需要初始化函数
         $this->initRoute();
     }
 
@@ -76,7 +77,9 @@ abstract class MarmotCore
         $this->initCache();//初始化缓存使用
         $this->initDb();//初始化mysql
         $this->initError();
+        $this->initHook();//初始化钩子, 可以初始化其他需要初始化函数
     }
+
     abstract protected function initFramework() : void;
 
     abstract protected function getFramework() : IFramework;
@@ -238,4 +241,8 @@ abstract class MarmotCore
     abstract protected function initDb();
     
     abstract protected function initCache();
+
+    protected function initHook() : void
+    {
+    }
 }

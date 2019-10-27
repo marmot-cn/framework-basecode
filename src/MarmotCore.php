@@ -55,7 +55,6 @@ abstract class MarmotCore
         $this->initCache();//初始化缓存使用
         $this->initDb();//初始化mysql
         $this->initError();
-        $this->initHook();//初始化钩子, 可以初始化其他需要初始化函数
         $this->initRoute();
     }
 
@@ -77,9 +76,7 @@ abstract class MarmotCore
         $this->initCache();//初始化缓存使用
         $this->initDb();//初始化mysql
         $this->initError();
-        $this->initHook();//初始化钩子, 可以初始化其他需要初始化函数
     }
-
     abstract protected function initFramework() : void;
 
     abstract protected function getFramework() : IFramework;
@@ -87,6 +84,11 @@ abstract class MarmotCore
     abstract protected function initApplication() : void;
 
     abstract protected function getApplication() : IApplication;
+    
+    protected function getSdks() : array
+    {
+        return [];
+    }
     
     /**
      * 符合PSR4自动加载规范
@@ -117,15 +119,38 @@ abstract class MarmotCore
         include_once 'errorConfig.php';
         self::$errorDescriptions = include_once 'errorDescriptionConfig.php';
 
-        $application = $this->getApplication();
-        $application->initErrorConfig();
+        $this->initFrameworkError();
+        $this->initApplicationError();
+        $this->initSdksError();
 
+        self::setLastError(ERROR_NOT_DEFINED);
+    }
+
+    private function initFrameworkError()
+    {
         $framework = $this->getFramework();
         $framework->initErrorConfig();
 
-        self::$errorDescriptions = self::$errorDescriptions + $application->getErrorDescriptions();
+        self::$errorDescriptions = self::$errorDescriptions + $framework->getErrorDescriptions();
+    }
 
-        self::setLastError(ERROR_NOT_DEFINED);
+    private function initApplicationError()
+    {
+        $application = $this->getApplication();
+        $application->initErrorConfig();
+
+        self::$errorDescriptions = self::$errorDescriptions + $application->getErrorDescriptions();
+    }
+
+    private function initSdksError()
+    {
+        $sdks = $this->getSdks();
+        if (!empty($sdks)) {
+            foreach ($sdks as $sdk) {
+                $sdk->initErrorConfig();
+                self::$errorDescriptions = self::$errorDescriptions + $sdk->getErrorDescriptions();
+            }
+        }
     }
 
     public static function setLastError(int $errorCode = 0, array $source = array())
@@ -241,8 +266,4 @@ abstract class MarmotCore
     abstract protected function initDb();
     
     abstract protected function initCache();
-
-    protected function initHook() : void
-    {
-    }
 }

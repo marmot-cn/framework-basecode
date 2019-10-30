@@ -16,7 +16,7 @@ class NullTranslator implements ITranslator, INull
     public static function &getInstance()
     {
         if (!self::$instance instanceof self) {
-            self::$instance = new self();
+            self::$instance = new static();
         }
         return self::$instance;
     }

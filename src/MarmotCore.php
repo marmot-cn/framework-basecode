@@ -55,6 +55,7 @@ abstract class MarmotCore
         $this->initCache();//初始化缓存使用
         $this->initDb();//初始化mysql
         $this->initError();
+        $this->initHook();
         $this->initRoute();
     }
 
@@ -76,6 +77,7 @@ abstract class MarmotCore
         $this->initCache();//初始化缓存使用
         $this->initDb();//初始化mysql
         $this->initError();
+        $this->initHook();
     }
     abstract protected function initFramework() : void;
 
@@ -203,6 +205,10 @@ abstract class MarmotCore
 
     abstract protected function getAppPath() : string;
     
+    protected function initHook() : void
+    {
+    }
+
     /**
      * 路由,需要解决以前随意由个人设置路由的习惯,
      * 而希望能用统一的路由风格来解决这个问题.

@@ -6,6 +6,7 @@ use Prophecy\Argument;
 
 use GuzzleHttp\Client;
 use Marmot\Interfaces\IRestfulTranslator;
+use Marmot\Core;
 
 class GuzzleAdapterTest extends TestCase
 {
@@ -815,5 +816,37 @@ class GuzzleAdapterTest extends TestCase
                 ->with($expected['headers']);
                    
         $adapter->formatResponse($mockResponse->reveal());
+    }
+
+    /**
+     * 测试 mapErrors, 初始化 Core::setLastError(ERROR_NOT_DEFINED);
+     * 1. getMapErrors 返回数组, 后端错误ID xx => 映射本地错误ID RESOURCE_NOT_EXIST
+     * 2. mock lasterErrorId 返回后端错误ID xx
+     * 3. 调用 mapErrors, 并调用Core::getLastError()->getId(), 期望返回 RESOURCE_NOT_EXIST
+     */
+    public function testMapErrors()
+    {
+        Core::setLastError(ERROR_NOT_DEFINED);
+        $apiErrorId = 10;
+        $mapErrors = [$apiErrorId => RESOURCE_NOT_EXIST];
+
+        $guzzleAdapter = $this->getMockBuilder(MockGuzzleAdapter::class)
+            ->setMethods(
+                [
+                    'getMapErrors',
+                    'lastErrorId'
+                ]
+            )->getMock();
+        
+        $guzzleAdapter->expects($this->once())
+            ->method('getMapErrors')
+            ->willReturn($mapErrors);
+
+        $guzzleAdapter->expects($this->once())
+            ->method('lastErrorId')
+            ->willReturn($apiErrorId);
+
+        $guzzleAdapter->mapErrors();
+        $this->assertEquals(RESOURCE_NOT_EXIST, Core::getLastError()->getId());
     }
 }

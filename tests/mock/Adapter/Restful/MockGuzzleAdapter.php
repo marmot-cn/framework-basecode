@@ -152,4 +152,9 @@ class MockGuzzleAdapter extends GuzzleAdapter
     {
         parent::formatResponse($response);
     }
+
+    public function mapErrors() : void
+    {
+        parent::mapErrors();
+    }
 }

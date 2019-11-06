@@ -263,7 +263,26 @@ abstract class GuzzleAdapter
         if ($this->getStatusCode() >= 200 && $this->getStatusCode() < 300) {
             return true;
         }
+        $this->mapErrors();
         return false;
+    }
+
+    /**
+     * [远程错误ID => 本地错误ID]
+     */
+    protected function getMapErrors() : array
+    {
+        return [];
+    }
+
+    protected function mapErrors() : void
+    {
+        $id = $this->lastErrorId();
+        $mapErrors = $this->getMapErrors();
+    
+        if (isset($mapErrors[$id])) {
+            Core::setLastError($mapErrors[$id]);
+        }
     }
 
     public function lastErrorInfo() : array

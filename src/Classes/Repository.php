@@ -8,7 +8,7 @@ abstract class Repository
 
     abstract protected function getMockAdapter();
 
-    protected function getAdapter()
+    public function getAdapter()
     {
         return $this->isMocked()? $this->getMockAdapter() : $this->getActualAdapter();
     }

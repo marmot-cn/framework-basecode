@@ -27,6 +27,7 @@ class FragmentCacheQueryTest extends TestCase
                                 ->setMethods(
                                     [
                                         'getCacheLayer',
+                                        'fetchCacheData',
                                         'refresh',
                                         'getFragmentKey'
                                     ]
@@ -47,7 +48,7 @@ class FragmentCacheQueryTest extends TestCase
                 return parent::getFragmentKey();
             }
 
-            public function refresh()
+            public function fetchCacheData()
             {
             }
         };
@@ -126,7 +127,7 @@ class FragmentCacheQueryTest extends TestCase
         $this->assertFalse($result);
     }
 
-    public function testDel()
+    public function testClear()
     {
         $this->cacheLayer->del(Argument::exact($this->fragmentKey))
                          ->shouldBeCalledTimes(1)
@@ -134,7 +135,7 @@ class FragmentCacheQueryTest extends TestCase
 
         $this->bindMock();
 
-        $this->fragmentCacheQuery->del();
+        $this->fragmentCacheQuery->clear();
     }
 
     private function bindMock()

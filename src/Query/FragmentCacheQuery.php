@@ -62,12 +62,31 @@ abstract class FragmentCacheQuery
     /**
      * 更新缓存片段
      */
-    abstract public function refresh();
+    public function refresh()
+    {
+        $data = $this->fetchCacheData();
+
+        $this->save($data);
+
+        return $data;
+    }
+
+    abstract protected function fetchCacheData();
+
+    protected function getTtl() : int
+    {
+        return 0;
+    }
+
+    protected function save($data) : bool
+    {
+        return $this->getCacheLayer()->save($this->getFragmentKey(), $data, $this->getTtl());
+    }
 
     /**
      * 删除片段缓存
      */
-    public function del()
+    public function clear()
     {
         $this->getCacheLayer()->del($this->getFragmentKey());
     }

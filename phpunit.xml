@@ -8,13 +8,18 @@
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
-         syntaxCheck="true"
          forceCoversAnnotation="false"
          bootstrap="./tests/bootstrap.php">
 
     <testsuites>
-        <testsuite name="Framework">
-            <directory>./tests/src</directory>
+        <testsuite name="ut">
+            <directory>./tests/ut/src</directory>
+        </testsuite>
+        <testsuite name="smoke">
+            <directory>./tests/smoke</directory>
+        </testsuite>
+        <testsuite name="integration">
+            <directory>./tests/integration</directory>
         </testsuite>
     </testsuites>
 

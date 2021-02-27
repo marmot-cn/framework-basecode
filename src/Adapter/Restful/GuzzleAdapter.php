@@ -268,7 +268,10 @@ abstract class GuzzleAdapter
     }
 
     /**
-     * [远程错误ID => 本地错误ID]
+     * [
+     *  远程错误ID => 本地错误ID.
+     *  远程错误ID => ['pointer'=>本地错误id]
+     * ]
      */
     protected function getMapErrors() : array
     {
@@ -278,10 +281,11 @@ abstract class GuzzleAdapter
     protected function mapErrors() : void
     {
         $id = $this->lastErrorId();
+        $pointer = $this->lastErrorPointer();
         $mapErrors = $this->getMapErrors();
     
         if (isset($mapErrors[$id])) {
-            Core::setLastError($mapErrors[$id]);
+            is_array($mapErrors[$id]) ? Core::setLastError($mapErrors[$id][$pointer]) : Core::setLastError($mapErrors[$id]);
         }
     }
 
@@ -295,6 +299,13 @@ abstract class GuzzleAdapter
         $contents = $this->getContents();
 
         return isset($contents['errors']) ? $contents['errors'][0]['id'] : 0;
+    }
+
+    public function lastErrorPointer() : string
+    {
+        $contents = $this->getContents();
+
+        return isset($contents['errors']) ? $contents['errors'][0]['source']['pointer'] : '';
     }
 
     protected function isCached() : bool

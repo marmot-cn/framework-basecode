@@ -1,5 +1,7 @@
 # framework-basecode
 
-## 1.0.1 修改
+## 说明
 
-`guzzlehttp/guzzle:6.3.0` 升级为 `guzzlehttp/guzzle:6.5.5` 
+框架核心代码
+
+[框架文档](https://code.aliyun.com/marmot-cn/docs)

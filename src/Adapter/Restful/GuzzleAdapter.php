@@ -285,7 +285,9 @@ abstract class GuzzleAdapter
         $mapErrors = $this->getMapErrors();
     
         if (isset($mapErrors[$id])) {
-            is_array($mapErrors[$id]) ? Core::setLastError($mapErrors[$id][$pointer]) : Core::setLastError($mapErrors[$id]);
+            is_array($mapErrors[$id])
+            ? Core::setLastError($mapErrors[$id][$pointer])
+            : Core::setLastError($mapErrors[$id]);
         }
     }
 
@@ -301,11 +303,13 @@ abstract class GuzzleAdapter
         return isset($contents['errors']) ? $contents['errors'][0]['id'] : 0;
     }
 
-    public function lastErrorPointer() : string
+    public function lastErrorPointer()
     {
         $contents = $this->getContents();
 
-        return isset($contents['errors']) ? $contents['errors'][0]['source']['pointer'] : '';
+        return isset($contents['errors'][0]['source']['pointer'])
+        ? $contents['errors'][0]['source']['pointer']
+        : '';
     }
 
     protected function isCached() : bool

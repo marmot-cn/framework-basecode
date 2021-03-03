@@ -128,5 +128,14 @@ class Core extends MarmotCore
 
     protected function initCache()
     {
+        $memcachedServices = self::$container->get('memcached.service');
+        //初始化memcached缓存 -- 开始
+        $memcached = new \Memcached();
+        $memcached->addServers($memcachedServices);
+
+        self::$cacheDriver = new \Doctrine\Common\Cache\MemcachedCache();
+        self::$cacheDriver->setMemcached($memcached);
+        self::$cacheDriver->setNamespace('phpcore');
+        //初始化memcached缓存 -- 结束
     }
 }

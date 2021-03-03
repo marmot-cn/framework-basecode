@@ -13,4 +13,9 @@ class MockCache extends Cache
     {
         return parent::formatID($id);
     }
+
+    public function getCacheDriver()
+    {
+        return parent::getCacheDriver();
+    }
 }

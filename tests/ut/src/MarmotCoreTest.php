@@ -27,22 +27,7 @@ class MarmotCoreTest extends TestCase
                 ]
             )->getMock();
 
-        $core->expects($this->once())
-              ->method('initAutoload');
-        $core->expects($this->once())
-              ->method('initFramework');
-        $core->expects($this->once())
-              ->method('initApplication');
-        $core->expects($this->once())
-              ->method('initContainer');
-        $core->expects($this->once())
-              ->method('initCache');
-        $core->expects($this->once())
-              ->method('initEnv');
-        $core->expects($this->once())
-              ->method('initDb');
-        $core->expects($this->once())
-              ->method('initError');
+        $this->initCore($core);
         $core->expects($this->once())
               ->method('initRoute');
         $core->init();
@@ -64,6 +49,12 @@ class MarmotCoreTest extends TestCase
                 ]
             )->getMock();
 
+        $this->initCore($core);
+        $core->initCli();
+    }
+
+    protected function initCore($core)
+    {
         $core->expects($this->once())
               ->method('initAutoload');
         $core->expects($this->once())
@@ -80,7 +71,6 @@ class MarmotCoreTest extends TestCase
               ->method('initDb');
         $core->expects($this->once())
               ->method('initError');
-        $core->initCli();
     }
 
     public function testInitEnv()

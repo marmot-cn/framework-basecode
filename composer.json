@@ -28,7 +28,7 @@
         "phpseclib/phpseclib": "^2.0"
     },
     "require-dev": {
-        "chloroplast/marmot-dev-pacakges": "dev-master"
+        "chloroplast/marmot-dev-pacakges": "1.0.1"
     },
     "autoload": {
         "psr-4": {

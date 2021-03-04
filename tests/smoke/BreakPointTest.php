@@ -37,9 +37,9 @@ class BreakPointTest extends TestCase
     //递归检查文件
     public function fetchFiles($path, &$files)
     {
-        $dir_handle = openDir($path);
+        $dirHandler = openDir($path);
      
-        while (false !== $file=readDir($dir_handle)) {
+        while (false !== $file=readDir($dirHandler)) {
             if ($file=='.' || $file=='..') {
                 continue;
             }
@@ -55,7 +55,7 @@ class BreakPointTest extends TestCase
             }
         }
      
-        closeDir($dir_handle);
+        closeDir($dirHandler);
     }
 
     //检查是否存在 exit 标签

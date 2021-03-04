@@ -12,7 +12,7 @@ class FragmentCacheQueryTest extends TestCase
 {
     private $fragmentCacheQuery;
 
-    private $childFragmentCacheQuery;
+    private $mockFragmentCacheQuery;
 
     private $fragmentKey;//片段缓存key名
 
@@ -35,43 +35,34 @@ class FragmentCacheQueryTest extends TestCase
                                 ->getMock();
 
         $this->mockCache = new MockCache('cacheKey');
-
-        $this->childFragmentCacheQuery = new class($this->fragmentKey, $this->mockCache) extends FragmentCacheQuery
-        {
-            public function getCacheLayer() : CacheLayer
-            {
-                return parent::getCacheLayer();
-            }
-
-            public function getFragmentKey() : string
-            {
-                return parent::getFragmentKey();
-            }
-
-            public function fetchCacheData()
-            {
-            }
-        };
-
+        $this->mockFragmentCacheQuery = new MockFragmentCacheQuery(
+            $this->fragmentKey,
+            $this->mockCache
+        );
         $this->cacheLayer = $this->prophesize(CacheLayer::class);
     }
 
     public function tearDown()
     {
         unset($this->fragmentCacheQuery);
-        unset($this->childFragmentCacheQuery);
+        unset($this->mockFragmentCacheQuery);
         unset($this->cacheLayer);
         unset($this->fragmentKey);
     }
 
     public function testGetCacheLayer()
     {
-        $this->assertEquals($this->mockCache, $this->childFragmentCacheQuery->getCacheLayer());
+        $this->assertEquals($this->mockCache, $this->mockFragmentCacheQuery->getCacheLayer());
     }
 
     public function testGetFragmentKey()
     {
-        $this->assertEquals($this->fragmentKey, $this->childFragmentCacheQuery->getFragmentKey());
+        $this->assertEquals($this->fragmentKey, $this->mockFragmentCacheQuery->getFragmentKey());
+    }
+
+    public function testGetDefaultTtl()
+    {
+        $this->assertEquals(0, $this->mockFragmentCacheQuery->getTtl());
     }
 
     /**
@@ -111,6 +102,9 @@ class FragmentCacheQueryTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
+    /**
+     * 测试获取数据失败
+     */
     public function testGetFail()
     {
         $this->cacheLayer->get(Argument::exact($this->fragmentKey))
@@ -127,6 +121,9 @@ class FragmentCacheQueryTest extends TestCase
         $this->assertFalse($result);
     }
 
+    /**
+     * 测试清楚缓存数据
+     */
     public function testClear()
     {
         $this->cacheLayer->del(Argument::exact($this->fragmentKey))
@@ -136,6 +133,73 @@ class FragmentCacheQueryTest extends TestCase
         $this->bindMock();
 
         $this->fragmentCacheQuery->clear();
+    }
+
+    /**
+     * 测试刷新缓存数据
+     */
+    public function testRefresh()
+    {
+        $expected = 'data';
+
+        $fragmentCacheQuery = $this->getMockBuilder(FragmentCacheQuery::class)
+                                ->setMethods(
+                                    [
+                                        'fetchCacheData',
+                                        'save'
+                                    ]
+                                )->disableOriginalConstructor()
+                                ->getMock();
+
+        $fragmentCacheQuery->expects($this->once())
+                             ->method('save');
+        $fragmentCacheQuery->expects($this->once())
+                             ->method('fetchCacheData')
+                             ->willReturn($expected);
+
+        $result = $fragmentCacheQuery->refresh();
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * 测试保存数据
+     */
+    public function testSave()
+    {
+        $data = 'data';
+        $ttl = 10;
+
+        $fragmentCacheQuery = $this->getMockBuilder(MockFragmentCacheQuery::class)
+                                ->setMethods(
+                                    [
+                                        'getCacheLayer',
+                                        'getFragmentKey',
+                                        'getTtl'
+                                    ]
+                                )->disableOriginalConstructor()
+                                ->getMock();
+
+        $this->cacheLayer->save(
+            Argument::exact($this->fragmentKey),
+            Argument::exact($data),
+            Argument::exact($ttl)
+        )->shouldBeCalledTimes(1)
+         ->willReturn(true);
+
+        $fragmentCacheQuery->expects($this->once())
+                             ->method('getFragmentKey')
+                             ->willReturn($this->fragmentKey);
+
+        $fragmentCacheQuery->expects($this->once())
+                             ->method('getCacheLayer')
+                             ->willReturn($this->cacheLayer->reveal());
+
+        $fragmentCacheQuery->expects($this->once())
+                             ->method('getTtl')
+                             ->willReturn($ttl);
+
+        $result = $fragmentCacheQuery->save($data);
+        $this->assertTrue($result);
     }
 
     private function bindMock()

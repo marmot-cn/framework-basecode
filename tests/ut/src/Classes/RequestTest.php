@@ -427,6 +427,7 @@ class RequestTest extends TestCase
                 ->willReturn($expectedResult);
 
         $result = $request->get($expectedName, $expectedDefaultValue);
+        $this->assertEquals($expectedResult, $result);
     }
 
     /**

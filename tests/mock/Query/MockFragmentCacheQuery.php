@@ -1,6 +1,8 @@
 <?php
 namespace Marmot\Basecode\Query;
 
+use Marmot\Interfaces\CacheLayer;
+
 class MockFragmentCacheQuery extends FragmentCacheQuery
 {
     protected function fetchCacheData()
@@ -16,11 +18,6 @@ class MockFragmentCacheQuery extends FragmentCacheQuery
     public function getFragmentKey() : string
     {
         return parent::getFragmentKey();
-    }
-
-    public function fetchCacheData()
-    {
-        return true;
     }
 
     public function getTtl() : int

@@ -16,12 +16,8 @@ use Prophecy\Argument;
 class CommandBusTest extends TestCase
 {
     private $commandBus;
-
-    private $commandHandler;
     
     private $command;
-
-    private $transaction;
 
     public function setUp()
     {

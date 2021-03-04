@@ -15,6 +15,9 @@
         <testsuite name="ut">
             <directory>./tests/ut/src</directory>
         </testsuite>
+        <testsuite name="bdd">
+            <directory>./tests/bdd</directory>
+        </testsuite>
         <testsuite name="smoke">
             <directory>./tests/smoke</directory>
         </testsuite>

@@ -44,11 +44,9 @@ class AC4 extends TestCase
             $this->ids[1]=>'data2',
         ];
 
-        $memcached = $this->cache->getCacheDriver();
-
         for ($i = 0; $i<2; $i++) {
-            $memcached->save(
-                $this->cache->formatID($this->ids[$i]),
+            $this->cache->save(
+                $this->ids[$i],
                 $this->data[$this->ids[$i]]
             );
         }

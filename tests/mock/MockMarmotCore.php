@@ -47,6 +47,11 @@ class MockMarmotCore extends MarmotCore
         parent::initError();
     }
 
+    public function getSdks() : array
+    {
+        return parent::getSdks();
+    }
+
     protected function initDb()
     {
     }

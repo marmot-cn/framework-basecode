@@ -11,7 +11,7 @@ use Marmot\Core;
  * @Feature: 作为一位开发人员, 我需要在使用缓存操作的时候, 通过Cache, 进行CRUD操作
  * @Scenario: 添加数据到缓存后, 返回true
  */
-class AC1 extends TestCase
+class AddCacheBddTest extends TestCase
 {
     private $key = 'test';
 
@@ -59,8 +59,7 @@ class AC1 extends TestCase
         $result = $this->add();
         $this->assertTrue($result);
 
-        $memcached = $this->cache->getCacheDriver();
-        $actualData = $memcached->fetch($this->cache->formatID($this->id));
-        $this->assertEquals($this->data, $actualData);
+        $result = $this->cache->get($this->id);
+        $this->assertEquals($this->data, $result);
     }
 }

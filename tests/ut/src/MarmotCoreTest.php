@@ -7,6 +7,7 @@ use Marmot\Basecode\MockApplication;
 use Marmot\Basecode\MockFramework;
 use Marmot\Interfaces\Application\IApplication;
 use Marmot\Interfaces\Application\IFramework;
+use Marmot\Interfaces\Application\ISdk;
 
 class MarmotCoreTest extends TestCase
 {
@@ -124,5 +125,52 @@ class MarmotCoreTest extends TestCase
         $_SERVER['HTTP_MOCK_ERROR'] = 0;
         $result = $mockMarmotCore->isPublicMockedErrorRoute();
         $this->assertFalse($result);
+    }
+
+    public function testInitError()
+    {
+        $core = $this->getMockBuilder(MockMarmotCore::class)
+                    ->setMethods(
+                        [
+                            'getFramework',
+                            'getApplication',
+                            'getSdks'
+                        ]
+                    )->getMock();
+
+        $framework = $this->prophesize(IFramework::class);
+        $framework->initErrorConfig()->shouldBeCalledTimes(1);
+        $framework->getErrorDescriptions()->shouldBeCalledTimes(1)->willReturn([]);
+
+        $core->expects($this->once())
+             ->method('getFramework')
+             ->willReturn($framework->reveal());
+        
+        $application = $this->prophesize(IApplication::class);
+        $application->initErrorConfig()->shouldBeCalledTimes(1);
+        $application->getErrorDescriptions()->shouldBeCalledTimes(1)->willReturn([]);
+
+        $core->expects($this->once())
+             ->method('getApplication')
+             ->willReturn($application->reveal());
+
+        $sdk = $this->prophesize(ISdk::class);
+        $sdk->initErrorConfig()->shouldBeCalledTimes(1);
+        $sdk->getErrorDescriptions()->shouldBeCalledTimes(1)->willReturn([]);
+
+        $core->expects($this->once())
+            ->method('getSdks')
+            ->willReturn([$sdk->reveal()]);
+
+        $core->initError();
+        $this->assertEquals(ERROR_NOT_DEFINED, $core::getLastError()->getId());
+    }
+
+    public function testGetSdks()
+    {
+        $core = new MockMarmotCore();
+        $sdks = $core->getSdks();
+
+        $this->assertEquals([], $sdks);
     }
 }

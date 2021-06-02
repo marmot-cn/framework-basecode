@@ -9,9 +9,9 @@ use Marmot\Core;
 
 /**
  * @Feature: 作为一位开发人员, 我需要在使用缓存操作的时候, 通过Cache, 进行CRUD操作
- * @Scenario: 从缓存批量获取数据
+ * @Scenario: 从缓存获取数据
  */
-class AC4 extends TestCase
+class AC2IntegrationTest extends TestCase
 {
     private $key = 'test';
 
@@ -33,47 +33,33 @@ class AC4 extends TestCase
     }
 
     /**
-     * @Given: 当开发人员准备获取一个数据
+     * @Given: 当开发人员准备获取一个数据. id为1, 值为data
      */
     public function prepare()
     {
-        $this->ids = [1, 2, 3];
-
-        $this->data = [
-            $this->ids[0]=>'data1',
-            $this->ids[1]=>'data2',
-        ];
+        $this->id = 1;
+        $this->data = 'data';
 
         $memcached = $this->cache->getCacheDriver();
-
-        for ($i = 0; $i<2; $i++) {
-            $memcached->save(
-                $this->cache->formatID($this->ids[$i]),
-                $this->data[$this->ids[$i]]
-            );
-        }
+        $memcached->save($this->cache->formatID($this->id), $this->data);
     }
 
     /**
-     * @When: 当从缓存批量获取数据时候
+     * @When: 当从缓存获取数据时候, id为1, 期望返回数据
      */
-    public function getList()
+    public function get()
     {
-        return $this->cache->getList($this->ids);
+        return $this->cache->get($this->id);
     }
 
     /**
      * @Then: 数据等于'data', 即和存入数据一致
-     * @And: id 为 1, 2 返回 data1 和 data2
-     * @And: 3 返回空
      */
     public function testValidate()
     {
         $this->prepare();
         
-        list($hits, $miss) = $this->getList();
-
-        $this->assertEquals(array_values($this->data), $hits);
-        $this->assertEquals([$this->ids[2]], $miss);
+        $result = $this->get();
+        $this->assertEquals($this->data, $result);
     }
 }

@@ -49,4 +49,14 @@ class MockPeriodCacheStrategy
     {
         return $this->getTTL();
     }
+
+    public function publicRefreshTTL(CacheResponse $cacheResponse)
+    {
+        $this->refreshTTL($cacheResponse);
+    }
+
+    public function getPublicWithCache(string $url, array $query = array(), array $requestHeaders = array())
+    {
+        return getWithCache($url, $query, $requestHeaders);
+    }
 }

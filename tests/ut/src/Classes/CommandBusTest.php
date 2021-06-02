@@ -37,6 +37,14 @@ class CommandBusTest extends TestCase
         unset($this->command);
     }
 
+    public function testGetCommandHandlerFactory()
+    {
+        $commandBus = new MockCommandBus(new MockCommandHandlerFactory);
+        $commandHandlerFactory = $commandBus->getCommandHandlerFactory();
+
+        $this->assertInstanceOf('Marmot\Interfaces\ICommandHandlerFactory', $commandHandlerFactory);
+    }
+
     /**
      * 测试 CommandHandler 不存在情况
      */
@@ -62,21 +70,24 @@ class CommandBusTest extends TestCase
 
     public function testSendCommandHandlerExist()
     {
-        // $commandHandler = $this->prophesize(ICommandHandler::class);
-        // $commandHandler->execute(
-        //     Argument::exact($this->command)
-        // )->shouldBeCalledTimes(1)->willReturn(true);
+        $commandHandler = new MockCommandHandler();
+        $command = new MockCommand();
 
-        // $this->commandHandlerFactory->getHandler(
-        //     Argument::exact($this->command)
-        // )->shouldBeCalledTimes(1)
-        //  ->willReturn($commandHandler->reveal());
+        $this->commandHandlerFactory->getHandler(
+            Argument::exact($command)
+        )->shouldBeCalledTimes(1)
+         ->willReturn($commandHandler);
 
-        // $this->commandBus->expects($this->once())
-        //                  ->method('getCommandHandlerFactory')
-        //                  ->willReturn($this->commandHandlerFactory->reveal());
+        $this->commandBus->expects($this->once())
+                         ->method('getCommandHandlerFactory')
+                         ->willReturn($this->commandHandlerFactory->reveal());
+
+        $this->commandBus->expects($this->once())
+                         ->method('sendAction')
+                         ->with($commandHandler, $command)
+                         ->willReturn(true);
         
-        
-        // $this->assertTrue($result);
+        $result = $this->commandBus->send($command);
+        $this->assertTrue($result);
     }
 }

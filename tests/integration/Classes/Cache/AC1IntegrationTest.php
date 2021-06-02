@@ -9,9 +9,9 @@ use Marmot\Core;
 
 /**
  * @Feature: 作为一位开发人员, 我需要在使用缓存操作的时候, 通过Cache, 进行CRUD操作
- * @Scenario: 从缓存获取数据
+ * @Scenario: 添加数据到缓存后, 返回true
  */
-class AC2 extends TestCase
+class AC1IntegrationTest extends TestCase
 {
     private $key = 'test';
 
@@ -33,33 +33,34 @@ class AC2 extends TestCase
     }
 
     /**
-     * @Given: 当开发人员准备获取一个数据. id为1, 值为data
+     * @Given: 当开发人员准备添加一个数据. id为1, 值为data
      */
     public function prepare()
     {
         $this->id = 1;
         $this->data = 'data';
-
-        $memcached = $this->cache->getCacheDriver();
-        $memcached->save($this->cache->formatID($this->id), $this->data);
     }
 
     /**
-     * @When: 当从缓存获取数据时候, id为1, 期望返回数据
+     * @When: 当调用添加函数时, 期望返回添加 true
      */
-    public function get()
+    public function add()
     {
-        return $this->cache->get($this->id);
+        return $this->cache->save($this->id, $this->data);
     }
 
     /**
-     * @Then: 数据等于'data', 即和存入数据一致
+     * @Then: 可以在缓存查到该数据
      */
     public function testValidate()
     {
         $this->prepare();
         
-        $result = $this->get();
-        $this->assertEquals($this->data, $result);
+        $result = $this->add();
+        $this->assertTrue($result);
+
+        $memcached = $this->cache->getCacheDriver();
+        $actualData = $memcached->fetch($this->cache->formatID($this->id));
+        $this->assertEquals($this->data, $actualData);
     }
 }

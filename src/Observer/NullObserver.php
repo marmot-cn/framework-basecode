@@ -9,7 +9,7 @@ class NullObserver implements Observer, INull
 {
     private static $instance;
     
-    private function __constructor()
+    private function __construct()
     {
     }
 

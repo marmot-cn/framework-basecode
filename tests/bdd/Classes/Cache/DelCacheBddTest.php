@@ -9,9 +9,9 @@ use Marmot\Core;
 
 /**
  * @Feature: 作为一位开发人员, 我需要在使用缓存操作的时候, 通过Cache, 进行CRUD操作
- * @Scenario: 从缓存删除数据
+ * @Scenario: 添加数据到缓存后, 删除缓存数据, 返回true
  */
-class AC3 extends TestCase
+class DelCacheBddTest extends TestCase
 {
     private $key = 'test';
 
@@ -33,15 +33,13 @@ class AC3 extends TestCase
     }
 
     /**
-     * @Given: 当开发人员准备删除一个缓存数据. id为1
+     * @Given: 当开发人员准备添加一个数据. id为1, 值为data
      */
     public function prepare()
     {
         $this->id = 1;
         $this->data = 'data';
-
-        $memcached = $this->cache->getCacheDriver();
-        $memcached->save($this->cache->formatID($this->id), $this->data);
+        $this->cache->save($this->id, $this->data);
     }
 
     /**
@@ -53,7 +51,7 @@ class AC3 extends TestCase
     }
 
     /**
-     * @Then: 缓存数据已经为空
+     * @Then: 可以在缓存查到该数据
      */
     public function testValidate()
     {
@@ -62,8 +60,7 @@ class AC3 extends TestCase
         $result = $this->del();
         $this->assertTrue($result);
 
-        $memcached = $this->cache->getCacheDriver();
-        $actualData = $memcached->fetch($this->cache->formatID($this->id));
-        $this->assertEmpty($actualData);
+        $result = $this->cache->get($this->id);
+        $this->assertEmpty($result);
     }
 }

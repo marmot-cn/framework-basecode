@@ -11,7 +11,7 @@ use Marmot\Core;
  * @Feature: 作为一位开发人员, 我需要在使用缓存操作的时候, 通过Cache, 进行CRUD操作
  * @Scenario: 从缓存批量获取数据
  */
-class AC4 extends TestCase
+class AC4IntegrationTest extends TestCase
 {
     private $key = 'test';
 
@@ -44,9 +44,11 @@ class AC4 extends TestCase
             $this->ids[1]=>'data2',
         ];
 
+        $memcached = $this->cache->getCacheDriver();
+
         for ($i = 0; $i<2; $i++) {
-            $this->cache->save(
-                $this->ids[$i],
+            $memcached->save(
+                $this->cache->formatID($this->ids[$i]),
                 $this->data[$this->ids[$i]]
             );
         }

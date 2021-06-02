@@ -119,7 +119,7 @@ abstract class MarmotCore
     protected function initError()
     {
         include_once 'errorConfig.php';
-        self::$errorDescriptions = include_once 'errorDescriptionConfig.php';
+        self::$errorDescriptions = include 'errorDescriptionConfig.php';
 
         $this->initFrameworkError();
         $this->initApplicationError();
@@ -157,7 +157,6 @@ abstract class MarmotCore
 
     public static function setLastError(int $errorCode = 0, array $source = array())
     {
-
         if (!isset(self::$errorDescriptions[$errorCode])) {
             return false;
         }

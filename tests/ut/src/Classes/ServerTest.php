@@ -33,4 +33,10 @@ class ServerTest extends TestCase
         $result = $this->server->get('test', $expected);
         $this->assertEquals($expected, $result);
     }
+
+    public function testGetEmpty()
+    {
+        $result = $this->server->get('');
+        $this->assertEquals($_SERVER, $result);
+    }
 }

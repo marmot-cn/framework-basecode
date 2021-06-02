@@ -136,4 +136,74 @@ class PeriodCacheStrategyTest extends TestCase
         $result = $this->mockStrategy->getPublicEtag($cacheResponse);
         $this->assertEquals($expectedEtag, $result);
     }
+
+    /**
+     * 测试 refreshTTL
+     */
+    public function testRefreshTTL()
+    {
+        $ttl = 400;
+
+        $mockPeriodCacheStrategy = $this->getMockBuilder(MockPeriodCacheStrategy::class)
+                            ->setMethods(
+                                [
+                                    'getTTL'
+                                ]
+                            )->getMock();
+
+        $mockPeriodCacheStrategy->expects($this->once())
+                      ->method('getTTL')
+                      ->willReturn($ttl);
+
+        $cacheResponse = $this->prophesize(CacheResponse::class);
+        $cacheResponse->setTTL(Core::$container->get('time') + $ttl)
+                      ->shouldBeCalledTimes(1);
+
+        $mockPeriodCacheStrategy->publicRefreshTTL($cacheResponse->reveal());
+    }
+
+    /**
+     * 测试 refreshCache
+     */
+    public function testRefreshCace()
+    {
+        $key = 'key';
+        $cacheResponse = new CacheResponse(200, 'contents', []);
+
+        $mockPeriodCacheStrategy = $this->getMockBuilder(MockPeriodCacheStrategy::class)
+                            ->setMethods(
+                                [
+                                    'getCacheResponseRepository'
+                                ]
+                            )->getMock();
+
+        $cacheResponseRepository = $this->prophesize(CacheResponseRepository::class);
+        $cacheResponseRepository->save(Argument::exact($key), Argument::exact($cacheResponse))
+                                ->shouldBeCalledTimes(1)
+                                ->willReturn(true);
+
+        $mockPeriodCacheStrategy->expects($this->once())
+                      ->method('getCacheResponseRepository')
+                      ->willReturn($cacheResponseRepository->reveal());
+
+        $result = $mockPeriodCacheStrategy->refreshCache($key, $cacheResponse);
+        $this->assertTrue($result);
+    }
+
+    /**
+     * 测试 getWithCache($url, $query, $requestHeaders)
+     * not null $cacheResponse
+     */
+    public function testGetWithCacheNotNullCacheResponse()
+    {
+        $key = 'key';
+
+        $mockPeriodCacheStrategy = $this->getMockBuilder(MockPeriodCacheStrategy::class)
+                            ->setMethods(
+                                [
+                                    'getWithCache',
+                                    'getCacheResponseRepository'
+                                ]
+                            )->getMock();
+    }
 }

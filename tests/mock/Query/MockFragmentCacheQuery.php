@@ -7,7 +7,7 @@ class MockFragmentCacheQuery extends FragmentCacheQuery
 {
     protected function fetchCacheData()
     {
-        return '';
+        return 'data';
     }
 
     public function getCacheLayer() : CacheLayer

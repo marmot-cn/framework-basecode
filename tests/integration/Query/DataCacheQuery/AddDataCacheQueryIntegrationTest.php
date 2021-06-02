@@ -8,15 +8,17 @@ use Marmot\Core;
 
 /**
  * @Feature: 作为一位开发人员, 我需要在使用数据缓存操作的时候, 通过DataCacheQuery, 进行CRUD操作
- * @Scenario: 从数据缓存删除数据
+ * @Scenario: 添加数据数据到缓存后, 返回true
  */
-class AC3 extends TestCase
+class AddDataCacheQueryIntegrationTest extends TestCase
 {
     private $key = 'test';
 
     private $id;
     
     private $data;
+
+    private $dataCacheQuery;
 
     public function setUp()
     {
@@ -31,39 +33,35 @@ class AC3 extends TestCase
     }
 
     /**
-     * @Given: 当开发人员准备删除一个缓存数据. id为1
+     * @Given: 当开发人员准备添加一个数据. id为1, 值为data
      */
     public function prepare()
     {
         $this->id = 1;
         $this->data = 'data';
-
-        $cache = $this->dataCacheQuery->getCacheLayer();
-        $memcached = $cache->getCacheDriver();
-        $memcached->save($cache->formatID($this->id), $this->data);
     }
 
     /**
-     * @When: 当从缓存获取数据时候, id为1, 期望返回成功
+     * @When: 当调用添加函数时, 期望返回添加 true
      */
-    public function del()
+    public function add()
     {
-        return $this->dataCacheQuery->del($this->id);
+        return $this->dataCacheQuery->save($this->id, $this->data);
     }
 
     /**
-     * @Then: 缓存数据已经为空
+     * @Then: 可以在缓存查到该数据
      */
     public function testValidate()
     {
         $this->prepare();
         
-        $result = $this->del();
+        $result = $this->add();
         $this->assertTrue($result);
 
         $cache = $this->dataCacheQuery->getCacheLayer();
         $memcached = $cache->getCacheDriver();
         $actualData = $memcached->fetch($cache->formatID($this->id));
-        $this->assertEmpty($actualData);
+        $this->assertEquals($this->data, $actualData);
     }
 }

@@ -284,10 +284,16 @@ abstract class GuzzleAdapter
         $pointer = $this->lastErrorPointer();
         $mapErrors = $this->getMapErrors();
     
+
         if (isset($mapErrors[$id])) {
-            is_array($mapErrors[$id])
-            ? Core::setLastError($mapErrors[$id][$pointer])
-            : Core::setLastError($mapErrors[$id]);
+            if (!is_array($mapErrors[$id])) {
+                Core::setLastError($mapErrors[$id]);
+            }
+            if (is_array($mapErrors[$id])) {
+                isset($mapErrors[$id][$pointer]) ?
+                    Core::setLastError($mapErrors[$id][$pointer]) :
+                    Core::setLastError(INCORRECT_RAW_BODY);
+            }
         }
     }
 

@@ -14,6 +14,10 @@ class Error
     private $title;
 
     private $detail;
+
+    private $titleEn;
+
+    private $detailEn;
     
     private $source;
     
@@ -26,6 +30,8 @@ class Error
         string $code = '',
         string $title = '',
         string $detail = '',
+        string $titleEn = '',
+        string $detailEn = '',
         array $source = array(),
         array $meta = array()
     ) {
@@ -35,6 +41,8 @@ class Error
         $this->code = $code;
         $this->title = $title;
         $this->detail = $detail;
+        $this->titleEn = $titleEn;
+        $this->detailEn = $detailEn;
         $this->source = $source;
         $this->meta = $meta;
     }
@@ -67,6 +75,16 @@ class Error
     public function getDetail() : string
     {
         return $this->detail;
+    }
+
+    public function getTitleEn() : string
+    {
+        return $this->titleEn;
+    }
+
+    public function getDetailEn() : string
+    {
+        return $this->detailEn;
     }
 
     public function getSource() : array

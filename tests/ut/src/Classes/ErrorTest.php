@@ -26,6 +26,8 @@ class ErrorTest extends TestCase
         $this->assertEquals('', $this->error->getCode());
         $this->assertEquals('', $this->error->getTitle());
         $this->assertEquals('', $this->error->getDetail());
+        $this->assertEquals('', $this->error->getTitleEn());
+        $this->assertEquals('', $this->error->getDetailEn());
         $this->assertEquals(array(), $this->error->getSource());
         $this->assertEquals(array(), $this->error->getMeta());
     }
@@ -39,6 +41,8 @@ class ErrorTest extends TestCase
             10001,
             'title',
             'detail',
+            'titleEn',
+            'detailEn',
             array(
                 'pointer'=>'/data/attributes/cellPhone'
             ),
@@ -53,6 +57,8 @@ class ErrorTest extends TestCase
         $this->assertEquals('10001', $this->error->getCode());
         $this->assertEquals('title', $this->error->getTitle());
         $this->assertEquals('detail', $this->error->getDetail());
+        $this->assertEquals('titleEn', $this->error->getTitleEn());
+        $this->assertEquals('detailEn', $this->error->getDetailEn());
         $this->assertEquals(
             array('pointer'=>'/data/attributes/cellPhone'),
             $this->error->getSource()

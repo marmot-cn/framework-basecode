@@ -1,15 +1,20 @@
-phpfpm:
-  image: "registry.cn-hangzhou.aliyuncs.com/phpfpm/phpfpm-end"
-  volumes:
-   - ./:/var/www/html/
-  links:
-    - memcached-1
-    - memcached-2
-  cap_add:
-   - SYS_PTRACE
+version: "3"
 
-memcached-1:
-  image: "registry.cn-hangzhou.aliyuncs.com/marmot/memcached:1.0"
+services:
+  phpfpm:
+    image: "registry.cn-hangzhou.aliyuncs.com/phpfpm/phpfpm-end"
+    volumes:
+     - ./:/var/www/html/
+    links:
+      - memcached-1
+      - memcached-2
+    cap_add:
+     - SYS_PTRACE
+    networks:
+      - default
 
-memcached-2:
-  image: "registry.cn-hangzhou.aliyuncs.com/marmot/memcached:1.0"
+  memcached-1:
+    image: "registry.cn-hangzhou.aliyuncs.com/marmot/memcached:1.0"
+
+  memcached-2:
+    image: "registry.cn-hangzhou.aliyuncs.com/marmot/memcached:1.0"

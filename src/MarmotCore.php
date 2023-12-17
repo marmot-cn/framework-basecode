@@ -168,6 +168,8 @@ abstract class MarmotCore
             self::$errorDescriptions[$errorCode]['code'],
             self::$errorDescriptions[$errorCode]['title'],
             self::$errorDescriptions[$errorCode]['detail'],
+            self::$errorDescriptions[$errorCode]['titleEn'],
+            self::$errorDescriptions[$errorCode]['detailEn'],
             !empty($source) ? $source : self::$errorDescriptions[$errorCode]['source'],
             self::$errorDescriptions[$errorCode]['meta']
         );

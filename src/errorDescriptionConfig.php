@@ -9,6 +9,8 @@ return array(
             'code'=>ERROR_NOT_DEFINED,
             'title'=>'error not defined',
             'detail'=>'error not defined',
+            'titleEn'=>'error not defined',
+            'detailEn'=>'error not defined',
             'source'=>array(),
             'meta'=>array()
         ),
@@ -20,6 +22,8 @@ return array(
             'code'=>INTERNAL_SERVER_ERROR,
             'title'=>'internal server error',
             'detail'=>'internal server error',
+            'titleEn'=>'internal server error',
+            'detailEn'=>'internal server error',
             'source'=>array(),
             'meta'=>array()
         ),
@@ -31,6 +35,8 @@ return array(
             'code'=>ROUTE_NOT_EXIST,
             'title'=>'route not exist',
             'detail'=>'route not exist',
+            'titleEn'=>'route not exist',
+            'detailEn'=>'route not exist',
             'source'=>array(),
             'meta'=>array()
         ),
@@ -42,6 +48,8 @@ return array(
             'code'=>METHOD_NOT_ALLOWED,
             'title'=>'method not allowd',
             'detail'=>'method not allowd',
+            'titleEn'=>'method not allowd',
+            'detailEn'=>'method not allowd',
             'source'=>array(),
             'meta'=>array()
         ),
@@ -53,6 +61,8 @@ return array(
             'code'=>UNSUPPORTED_MEDIA_TYPE,
             'title'=>'unsupported media type',
             'detail'=>'unsupported media type',
+            'titleEn'=>'unsupported media type',
+            'detailEn'=>'unsupported media type',
             'source'=>array(),
             'meta'=>array()
         ),
@@ -64,6 +74,8 @@ return array(
             'code'=>NOT_ACCEPTABLE_MEDIA_TYPE,
             'title'=>'not acceptable media type',
             'detail'=>'not acceptable media type',
+            'titleEn'=>'not acceptable media type',
+            'detailEn'=>'not acceptable media type',
             'source'=>array(),
             'meta'=>array()
         ),
@@ -75,6 +87,8 @@ return array(
             'code'=>INCORRECT_RAW_BODY,
             'title'=>'incorrent request data format',
             'detail'=>'incorrent request data format',
+            'titleEn'=>'incorrent request data format',
+            'detailEn'=>'incorrent request data format',
             'source'=>array(),
             'meta'=>array()
         ),
@@ -86,6 +100,8 @@ return array(
             'code'=>'RESOURCE_NOT_EXIST',
             'title'=>'Resource not exist',
             'detail'=>'Server can not find resource',
+            'titleEn'=>'Resource not exist',
+            'detailEn'=>'Server can not find resource',
             'source'=>array(),
             'meta'=>array()
         ),
@@ -97,6 +113,8 @@ return array(
             'code'=>COMMAND_HANDLER_NOT_EXIST,
             'title'=>'Command handler not exist',
             'detail'=>'Command handler not exist',
+            'titleEn'=>'Command handler not exist',
+            'detailEn'=>'Command handler not exist',
             'source'=>array(),
             'meta'=>array()
         ),
@@ -108,6 +126,8 @@ return array(
             'code'=>TRANSLATOR_NOT_EXIST,
             'title'=>'Translator not exist',
             'detail'=>'Translator handler not exist',
+            'titleEn'=>'Translator not exist',
+            'detailEn'=>'Translator handler not exist',
             'source'=>array(),
             'meta'=>array()
         ),
@@ -119,6 +139,8 @@ return array(
             'code'=>OBSERVER_NOT_EXIST,
             'title'=>'Observer not exist',
             'detail'=>'Observer not exist',
+            'titleEn'=>'Observer not exist',
+            'detailEn'=>'Observer not exist',
             'source'=>array(),
             'meta'=>array()
         ),
@@ -130,6 +152,8 @@ return array(
             'code'=>SUBJECT_NOT_EXIST,
             'title'=>'Subject not exist',
             'detail'=>'Subject not exist',
+            'titleEn'=>'Subject not exist',
+            'detailEn'=>'Subject not exist',
             'source'=>array(),
             'meta'=>array()
         ),

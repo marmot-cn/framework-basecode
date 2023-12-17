@@ -18,7 +18,7 @@
         "doctrine/annotations": "1.6.0",
         "doctrine/cache": "1.7.1",
         "ocramius/proxy-manager": "1.0.2",
-        "guzzlehttp/guzzle": "6.5.5",
+        "guzzlehttp/guzzle": "6.5.8",
         "neomerx/json-api": "0.8.11",
         "monolog/monolog": "1.23.0",
         "fluent/logger": "v1.0.0",

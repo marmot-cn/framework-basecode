@@ -8,7 +8,9 @@ abstract class Filter
     {
         if (is_array($string)) {
             foreach ($string as $key => $val) {
-                $string[$key] = Filter::addslashesPlus($val);
+                if (is_string($val)) {
+                    $string[$key] = Filter::addslashesPlus($val);
+                }
             }
             return $string;
         }
@@ -20,7 +22,9 @@ abstract class Filter
     {
         if (is_array($string)) {
             foreach ($string as $key => $val) {
-                $string[$key] = Filter::replacenlPlus($val);
+                if (is_string($val)) {
+                    $string[$key] = Filter::replacenlPlus($val);
+                }
             }
             return $string;
         }
@@ -43,7 +47,9 @@ abstract class Filter
     {
         if (is_array($string)) {
             foreach ($string as $key => $val) {
-                $string[$key] = Filter::trimPlus($val);
+                if (is_string($val)) {
+                    $string[$key] = Filter::trimPlus($val);
+                }
             }
             return $string;
         }
@@ -55,7 +61,9 @@ abstract class Filter
     {
         if (is_array($string)) {
             foreach ($string as $key => $val) {
-                $string[$key] = Filter::stripslashesPlus($val);
+                if (is_string($val)) {
+                    $string[$key] = Filter::stripslashesPlus($val);
+                }
             }
             return $string;
         }
@@ -67,7 +75,9 @@ abstract class Filter
     {
         if (is_array($string)) {
             foreach ($string as $key => $val) {
-                $string[$key] = Filter::htmlspecialcharsPlus($val);
+                if (is_string($val)) {
+                    $string[$key] = Filter::htmlspecialcharsPlus($val);
+                }
             }
 
             return $string;
@@ -123,7 +133,9 @@ abstract class Filter
     {
         if (is_array($string)) {
             foreach ($string as $key => $val) {
-                $string[$key] = Filter::stripTagsAttributesPlus($val, $allowtags, $allowattributes);
+                if (is_string($val)) {
+                    $string[$key] = Filter::stripTagsAttributesPlus($val, $allowtags, $allowattributes);
+                }
             }
             return $string;
         }
@@ -139,6 +151,7 @@ abstract class Filter
         if ($replace) {
             $html = Filter::stripslashesPlus($html);
         }
+
         if ($allow) {
             $html = Filter::trimPlus($html);
             $allowtags = '<b><i><u><blockquote><img><strong><em><font>
